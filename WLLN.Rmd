@@ -1,0 +1,163 @@
+---
+title: "Kolmogorov-Feller WLLN"
+author: "Yash Gupta"
+institute: "ISI- Delhi"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, "styles.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+# Kolmogorov-Feller WLLN
+
+Let ${\mathcal {X}}=\{ X_n,\ n\ge 1\}$ be a sequence of IID random variables and $S_n=X_1+X_2+\cdots +X_n$
+
+--
+
+$$\begin{aligned} \frac{S_n-n{\mathbb {E}}X\mathbb {1}_{(|X|\le n)}}{n}\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\quad n\rightarrow \infty \end{aligned}$$
+
+
+if and only if
+
+$$\begin{aligned} n {\mathbb {P}}(|X|>n)\longrightarrow 0\quad \text {as}\quad n\rightarrow \infty . \end{aligned}$$
+
+For the rest of the presentation, we'll assume  
+ $$\begin{aligned} {\tilde{m}}_{k}={\mathbb {E}}X\mathbb {1}_{(|X|\le k)} \ \ \ \forall \ \ \ 1\le k\le n \end{aligned}$$
+---
+
+# We'll prove the following equivalence
+
+Let ${\mathcal {X}}=\{ X_n,\ n\ge 1\}$ be a sequence of IID random variables and $S_n=X_1+X_2+\cdots +X_n$, then the following statements are equivalent.
+
+(a)
+
+ $$\begin{aligned} \frac{S_n-n{\tilde{m}}_{n}}{n}\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\quad n\rightarrow \infty \end{aligned}$$
+
+
+(b)
+ $$\frac{1}{n}\max _{1\le k\le n} \bigl |S_k-k{\tilde{m}}_{k}\bigr |\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\ n\rightarrow \infty$$
+
+
+
+(c)
+ $$\begin{aligned} n {\mathbb {P}}(|X|>n)\longrightarrow 0\quad \text {as}\quad n\rightarrow \infty . \end{aligned}$$
+--
+
+
+
+ (c) -> (a) is done in the class. we'll prove (a) -> (b) and (b) -> (c)
+
+---
+
+## Lemma 1 ( Etemadi's Inequality)
+ 
+Let t>0 and consider a finite collection $X_1,X_2,\ldots ,X_n$ of independent r.v.’s. Then
+
+ $$\begin{aligned} {\mathbb {P}}\bigl (\max _{1\le k\le n}|S_k|>4t\bigr )\le 4\max _{1\le k\le n} {\mathbb {P}}\bigl (|S_k|>t\bigr ) \end{aligned}$$
+ 
+ 
+## Analysis Lemma
+
+Let $\begin{aligned} a_k \in \mathbb{R} \  \forall \ k=1,2,.. \  \text{&} \ s_k = \Sigma_{i=1}^{k} a_i \end{aligned}$ , then
+
+  $$\begin{aligned} \max _{1\le k\le n}|a_k| \le 2 \max _{1\le k\le n}|s_k| \end{aligned}$$
+ 
+ **Proof**: Take $a_k = s_k - s_{k-1}$ and apply triangle inequality.
+ 
+---
+
+# PROOF (a) -> (b) 
+$$\begin{aligned} \frac{S_n-n{\tilde{m}}_{n}}{n}\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\quad n\rightarrow \infty \ \Rightarrow \ \frac{1}{n}\max _{1\le k\le n} \bigl |S_k-k{\tilde{m}}_{k}\bigr |\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\ n\rightarrow \infty \end{aligned}$$
+
+--
+
+Let's begin with LHS
+
+$$\begin{aligned} i.e.\qquad {\mathbb {P}}(|S_k-k{\tilde{m}}_{k}|>k\epsilon )<\frac{\delta }{4} \ \ \ \ \forall \ k > N_1(\epsilon,\delta) \end{aligned}$$
+
+--
+
+$$\begin{aligned} \Rightarrow \qquad {\mathbb {P}}(|S_k-k{\tilde{m}}_{k}|>k\epsilon )<\frac{\delta }{4} \ \ \ \ \forall \  N_1 < k < n \end{aligned}$$
+--
+
+$$\begin{aligned} \Rightarrow  \qquad \max _{N_1<k\le n} {\mathbb {P}}(|S_k-k{\tilde{m}}_{k}|>k\epsilon )<\frac{\delta }{4} \ \ \ \ \ \ \ \ \ \ \ \ \ \end{aligned}$$
+--
+ 
+$$\begin{aligned} \Rightarrow \qquad  \max _{N_1< k\le n} {\mathbb {P}}(|S_k-k{\tilde{m}}_{k}|>n\epsilon ) <\frac{\delta }{4}  \ \ \ \ \ \ \ \ \ \ \ \ \  -(i) \end{aligned}$$
+--
+We can further choose $N_2(\epsilon,\delta^{'})$ such that
+
+$$\begin{aligned} \Rightarrow  \qquad \max _{1\le k\le N_1} {\mathbb {P}}(|S_k-k{\tilde{m}}_k|>n\epsilon )<\frac{\delta ^{'}}{4} \ \ \ \  \forall \ \ n > N_2(\epsilon,\delta^{'})\ \ \ \ \ \ \ \ \  -(ii) \end{aligned} $$
+
+---
+# PROOF (a) -> (b) contd.
+
+$$\begin{aligned} \Rightarrow \qquad \max _{1\le k\le n} {\mathbb {P}}(|S_k-k{\tilde{m}}_k|>n\epsilon )< \frac{\delta +\delta ^{'}}{4} \ \ \ \ \  \forall \ \ n>N= \max(N_1, N_2) \end{aligned}$$
+--
+ 
+
+Using Lemma 1 we get 
+
+$$\begin{aligned} \qquad {\mathbb {P}}\bigl (\max _{1\le k\le n}|S_k-k{\tilde{m}}_k|>4 n\epsilon \bigr )<\delta +\delta ^{'} \ \ \ \forall \ \ n>N \end{aligned}$$
+--
+
+$$\begin{aligned} i.e. \qquad \frac{1}{n}\max _{1\le k\le n} \bigl |S_k-k{\tilde{m}}_k \bigr |\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\ n\rightarrow \infty \end{aligned} $$
+
+---
+# PROOF (b) -> (c)
+
+To prove : 
+$$\begin{aligned} \frac{1}{n}\max _{1\le k\le n} \bigl |S_k-k{\tilde{m}}_{k}\bigr |\overset{{\mathbb {P}}}{\longrightarrow } 0 \quad \text {as}\ n\rightarrow \infty \ \ \Rightarrow \ \ n {\mathbb {P}}(|X|>n)\longrightarrow 0\quad \text {as}\quad n\rightarrow \infty  \end{aligned}$$
+
+--
+
+**Proof**: By analysis lemma we have, 
+$$\begin{aligned}  \max _{1\le k\le n}|X_k-{\tilde{m}}_{k}|\le 2\max _{1\le k\le n}\bigl |\sum _{i=1}^k (X_i-{\tilde{m}}_{k})\bigr | \end{aligned}$$
+--
+
+$$\begin{aligned} \frac{1}{n} \max _{1\le k\le n}|X_k-{\tilde{m}}_{k}|  \overset{{\mathbb {P}}}{\longrightarrow } 0 \quad  \text{as} \quad     \frac{1}{n}\max _{1\le k\le n}\bigl |\sum _{i=1}^k (X_i-{\tilde{m}}_{k})\bigr | \overset{{\mathbb {P}}}{\longrightarrow } 0 \ \ \ \ \ \ -(iii) \end{aligned}$$
+--
+Also observe,
+$$\begin{aligned} \frac{1}{n}\max _{1\le k\le n}|{\tilde{m}}_k|\le \frac{1}{n}{\mathbb {E}}[|X|{1}_{ (|X|\le n)}] \rightarrow0 \quad \text{as} \quad n \rightarrow \infty \ \ \ \ \ -(iv) \end{aligned}$$
+---
+# PROOF (b) -> (c) contd.
+
+From (iii) and (iv) using triangle inequality we get,
+
+$$\begin{aligned} \frac{1}{n}\max _{1\le k\le n}|X_k| \overset{{\mathbb {P}}}{\longrightarrow } \ 0 \end{aligned}$$
+--
+
+By definition of convergence in probability,
+
+$$ \begin{aligned} {\mathbb {P}}\big (\max _{1\le k\le n}|X_k|> n\big ) \ {\longrightarrow } \ 0 \quad \text{as} \quad n \rightarrow \infty \end{aligned} $$
+--
+$$\begin{aligned}  \Rightarrow \qquad 1-\bigl (1-{\mathbb {P}}(|X|>n)\bigr )^n {\longrightarrow } \ 0 \quad \text{as} \quad n \rightarrow \infty \end{aligned} $$
+--
+
+$$ \begin{aligned} \because  \exp(-t) > 1-t \ \ \ \forall \ \ t>0 \end{aligned} $$ 
+$$\begin{aligned} \therefore\  \exp {\bigl \{-\mathbb {P}(|X|>n)\bigr \}} \le  \bigl (1-{\mathbb {P}}(|X|>n)\bigr )  \end{aligned}$$
+--
+
+$$\begin{aligned} \Rightarrow \quad\  1-\exp {\bigl \{ -n {\mathbb {P}}(|X|>n)\bigr \}} \le  1-\bigl (1-{\mathbb {P}}(|X|>n)\bigr )^n \ {\longrightarrow } \ 0 \quad \text{as} \quad n \rightarrow \infty \end{aligned}$$
+--
+
+$$\begin{aligned} \Rightarrow \quad n {\mathbb {P}}\bigl (|X|> n\bigr )\ {\longrightarrow } \ 0 \quad \text{as} \quad n \rightarrow \infty\end{aligned}$$
+---
+
+
+
+# Reference  
+
+[1]. [Etemadi N, On some classical results in probability theory, Sankhy¯a, Ser. A 47(2) (1985) 215–
+221](https://www.jstor.org/stable/25050536) 
+
+[2]. [A remark on the Kolmogorov–Feller weak law of large numbers](https://www.ias.ac.in/article/fulltext/pmsc/132/0053)
+
+
+
